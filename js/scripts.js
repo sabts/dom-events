@@ -17,14 +17,14 @@ elementMainTitle.addEventListener(
 
 //- Crea un botón con la etiqueta <button> en tu página HTML con el texto "Click me" y añadele un evento de click. Al hacer click tendrá que poner "clicked x times" donde x será el número de veces que hiciste click en él.
 const elementButtons = document.getElementById("buttons");
+let counter = 0;
 
 const clickCounter = event => {
-  let counter = 0;
   //console.log(event);
 };
 elementButtons.addEventListener(
   "click",
-  () => (elementButtons.textContent = counter++)
+  () => (elementButtons.textContent = 'clicked ' + counter++ + ' times')
 );
 
 //- Crea un p con el texto "esperando entrada de teclado..." al pulsar cualquier tecla deberá poner "has pulsado la tecla tal" y al soltarla el <p> volverá a tener el texto "esperando entrada de teclado...". Como reto extra puedes intentar añadir si se ha usado una combinación de teclas con alt, shift o control.
