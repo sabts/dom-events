@@ -32,11 +32,11 @@ const elementInput = document.getElementById("input-key")
 
 let key = " ";
 
-//const keyboardInput = event => {
-//  key = event.key;
-//};
+const keyboardInput = event => {
+ key = event.key;
+};
 
-document.addEventListener("keydown", () => {key = event.key;
+document.addEventListener("keydown", () => {key = keyboardInput;
   elementInput.textContent = "Has pulsado la tecla: " + key;
 });
 
@@ -56,18 +56,24 @@ const changeWords = (event) =>{
   elementTitleChange.textContent = wordsArray[index]
   }
 
-elementPreviousButton.addEventListener("click", () => {
+const next = () => {
   if (index > 0) {
-      index--;
-  } else {
-      index = wordsArray.length - 1; 
-  }
-  changeWords();})
+    index--;
+} else {
+    index = wordsArray.length - 1; 
+}
+changeWords()
+}
 
-  elementNextButton.addEventListener("click", () => {
-    if (index < wordsArray.length - 1) {
-        index++;
-    } else {
-        index = 0;
-    }
-    changeWords();})
+const previous = () => {   
+  if (index < wordsArray.length - 1) {
+  index++;
+} else {
+  index = 0;
+}
+changeWords()
+}
+
+elementPreviousButton.addEventListener("click", () => previous)
+
+  elementNextButton.addEventListener("click", () => next)
