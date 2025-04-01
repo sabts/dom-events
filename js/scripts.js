@@ -28,5 +28,46 @@ elementButtons.addEventListener(
 );
 
 //- Crea un p con el texto "esperando entrada de teclado..." al pulsar cualquier tecla deberá poner "has pulsado la tecla tal" y al soltarla el <p> volverá a tener el texto "esperando entrada de teclado...". Como reto extra puedes intentar añadir si se ha usado una combinación de teclas con alt, shift o control.
+const elementInput = document.getElementById("input-key")
+
+let key = " ";
+
+//const keyboardInput = event => {
+//  key = event.key;
+//};
+
+document.addEventListener("keydown", () => {key = event.key;
+  elementInput.textContent = "Has pulsado la tecla: " + key;
+});
+
+document.addEventListener("keyup", () => {
+  elementInput.textContent = "Esperando entrada de teclado...";
+});// se que el documwnt esta mal, pero cuando lo hice me equivoque y cuando lo cambie por "elementInput" no me funciono
 
 //- Crea un array con 5 palabras, las que tú quieras. Añade un h2 a tu HTML. Añade dos botones con el texto previous y next respectívamente. Haz que los botones cambien el texto del h2 con las palabras del array, cuando llegues a la última volverás a la primera al pulsar el botón next y cuando estés en la primera podrás volver a la última haciendo click al botón previous.
+const elementTitleChange = document.getElementById("title-change");
+const elementPreviousButton = document.getElementById("button-previous");
+const elementNextButton = document.getElementById("button-next");
+
+const wordsArray = ["No se", "que" ,"texto" ,"escribir", "peace"]
+let index = 0;
+
+const changeWords = (event) =>{
+  elementTitleChange.textContent = wordsArray[index]
+  }
+
+elementPreviousButton.addEventListener("click", () => {
+  if (index > 0) {
+      index--;
+  } else {
+      index = wordsArray.length - 1; 
+  }
+  changeWords();})
+
+  elementNextButton.addEventListener("click", () => {
+    if (index < wordsArray.length - 1) {
+        index++;
+    } else {
+        index = 0;
+    }
+    changeWords();})
